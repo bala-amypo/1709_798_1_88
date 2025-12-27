@@ -1,8 +1,7 @@
 package com.example.demo.exception;
 
-public class DuplicateResourceException extends RuntimeException {
-
-    public DuplicateResourceException(String message) {
+public class ConflictException extends RuntimeException {
+    public ConflictException(String message) {
         super(message);
     }
 }
