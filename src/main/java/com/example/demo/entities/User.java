@@ -1,9 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +26,6 @@ public class User {
     @Column(nullable = false)
     private String role = "RESIDENT";
 
-    @OneToOne(mappedBy = "owner")
+    @OneToOne(mappedBy = "owner", cascade = CascadeType.ALL)
     private ApartmentUnit apartmentUnit;
 }
