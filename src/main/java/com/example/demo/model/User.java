@@ -7,16 +7,19 @@ public class User {
     private String email;
     private String role;
     private String phone;
+    private String password;
     private ApartmentUnit apartmentUnit;
 
     public User() {}
 
-    public User(Long id, String name, String email, String role, String phone) {
+    // REQUIRED by AuthController
+    public User(Long id, String name, String email, String role, String phone, String password) {
         this.id = id;
         this.name = name;
         this.email = email;
         this.role = role;
         this.phone = phone;
+        this.password = password;
     }
 
     // getters & setters
@@ -34,6 +37,9 @@ public class User {
 
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
 
     public ApartmentUnit getApartmentUnit() { return apartmentUnit; }
     public void setApartmentUnit(ApartmentUnit apartmentUnit) {

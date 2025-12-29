@@ -1,38 +1,30 @@
 package com.example.demo.model;
 
-import jakarta.persistence.*;
-
-@Entity
 public class ApartmentUnit {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String unitNumber;
-
-    @ManyToOne
+    private int floor;
     private User owner;
 
     public ApartmentUnit() {}
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getUnitNumber() {
-        return unitNumber;
-    }
-
-    public void setUnitNumber(String unitNumber) {
+    public ApartmentUnit(Long id, String unitNumber, int floor, User owner) {
+        this.id = id;
         this.unitNumber = unitNumber;
-    }
-
-    public User getOwner() {
-        return owner;
-    }
-
-    public void setOwner(User owner) {
+        this.floor = floor;
         this.owner = owner;
     }
+
+    public Long getId() { return id; }
+    public void setId(long id) { this.id = id; }
+
+    public String getUnitNumber() { return unitNumber; }
+    public void setUnitNumber(String unitNumber) { this.unitNumber = unitNumber; }
+
+    public int getFloor() { return floor; }
+    public void setFloor(int floor) { this.floor = floor; }
+
+    public User getOwner() { return owner; }
+    public void setOwner(User owner) { this.owner = owner; }
 }

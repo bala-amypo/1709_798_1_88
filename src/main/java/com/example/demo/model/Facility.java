@@ -1,5 +1,7 @@
 package com.example.demo.model;
 
+import java.time.LocalTime;
+
 public class Facility {
 
     private Long id;
@@ -7,10 +9,13 @@ public class Facility {
     private String type;
     private String location;
     private String description;
+    private LocalTime openTime;
+    private LocalTime closeTime;
 
     public Facility() {}
 
-    public Facility(Long id, String name, String type, String location, String description) {
+    public Facility(Long id, String name, String type,
+                    String location, String description) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -32,4 +37,10 @@ public class Facility {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
+
+    public LocalTime getOpenTime() { return openTime; }
+    public void setOpenTime(LocalTime openTime) { this.openTime = openTime; }
+
+    public LocalTime getCloseTime() { return closeTime; }
+    public void setCloseTime(LocalTime closeTime) { this.closeTime = closeTime; }
 }
