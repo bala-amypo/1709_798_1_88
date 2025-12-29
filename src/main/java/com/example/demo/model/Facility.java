@@ -1,43 +1,13 @@
-package com.example.demo.model;
+package com.example.demo.service;
 
-import jakarta.persistence.*;
-import java.time.LocalTime;
+import com.example.demo.model.Facility;
+import java.util.List;
 
-@Entity
-public class Facility {
+public interface FacilityService {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    Facility createFacility(Facility facility);
 
-    private String name;
-    private String type;
-    private String location;
-    private String description;
+    List<Facility> getAllFacilities();
 
-    private LocalTime openTime;
-    private LocalTime closeTime;
-
-    public Facility() {}
-
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-
-    public String getType() { return type; }
-    public void setType(String type) { this.type = type; }
-
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-
-    public String getDescription() { return description; }
-    public void setDescription(String description) { this.description = description; }
-
-    public LocalTime getOpenTime() { return openTime; }
-    public void setOpenTime(LocalTime openTime) { this.openTime = openTime; }
-
-    public LocalTime getCloseTime() { return closeTime; }
-    public void setCloseTime(LocalTime closeTime) { this.closeTime = closeTime; }
+    Facility getFacilityById(Long id);
 }

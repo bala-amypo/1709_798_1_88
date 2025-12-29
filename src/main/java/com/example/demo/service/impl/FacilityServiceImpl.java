@@ -33,4 +33,14 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public List<Facility> get
+    public List<Facility> getAllFacilities() {
+        return facilityRepository.findAll();
+    }
+
+    @Override
+    public Facility getFacilityById(Long id) {
+        return facilityRepository.findById(id)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("Facility not found with id: " + id));
+    }
+}
