@@ -20,7 +20,6 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public Facility createFacility(Facility facility) {
-
         if (facility.getOpenTime() == null) {
             throw new BadRequestException("Open time is required");
         }
