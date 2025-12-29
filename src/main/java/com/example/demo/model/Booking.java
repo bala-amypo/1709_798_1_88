@@ -1,46 +1,35 @@
 package com.example.demo.model;
 
-import java.time.LocalDateTime;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "bookings")
 public class Booking {
 
-    public static final String STATUS_CONFIRMED = "CONFIRMED";
-    public static final String STATUS_CANCELLED = "CANCELLED";
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    private String customerName;
+
+    @ManyToOne
+    @JoinColumn(name = "facility_id")
     private Facility facility;
-    private User user;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
-    private String status;
 
+    // Constructors
     public Booking() {}
-
-    public Booking(Long id, Facility facility, User user,
-                   LocalDateTime startTime, LocalDateTime endTime, String status) {
-        this.id = id;
+    public Booking(String customerName, Facility facility) {
+        this.customerName = customerName;
         this.facility = facility;
-        this.user = user;
-        this.startTime = startTime;
-        this.endTime = endTime;
-        this.status = status;
     }
 
+    // Getters and Setters
     public Long getId() { return id; }
-    public void setId(long id) { this.id = id; }
+    public void setId(Long id) { this.id = id; }
+
+    public String getCustomerName() { return customerName; }
+    public void setCustomerName(String customerName) { this.customerName = customerName; }
 
     public Facility getFacility() { return facility; }
     public void setFacility(Facility facility) { this.facility = facility; }
-
-    public User getUser() { return user; }
-    public void setUser(User user) { this.user = user; }
-
-    public LocalDateTime getStartTime() { return startTime; }
-    public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
-
-    public LocalDateTime getEndTime() { return endTime; }
-    public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }
-
-    public String getStatus() { return status; }
-    public void setStatus(String status) { this.status = status; }
 }

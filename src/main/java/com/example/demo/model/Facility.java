@@ -1,9 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalTime;
 
 @Entity
+@Table(name = "facilities")
 public class Facility {
 
     @Id
@@ -12,13 +12,15 @@ public class Facility {
 
     private String name;
     private String description;
-    private String location;
 
-    private LocalTime openTime;
-    private LocalTime closeTime;
-
+    // Constructors
     public Facility() {}
+    public Facility(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
+    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
@@ -27,13 +29,4 @@ public class Facility {
 
     public String getDescription() { return description; }
     public void setDescription(String description) { this.description = description; }
-
-    public String getLocation() { return location; }
-    public void setLocation(String location) { this.location = location; }
-
-    public LocalTime getOpenTime() { return openTime; }
-    public void setOpenTime(LocalTime openTime) { this.openTime = openTime; }
-
-    public LocalTime getCloseTime() { return closeTime; }
-    public void setCloseTime(LocalTime closeTime) { this.closeTime = closeTime; }
 }
