@@ -60,7 +60,6 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public void deleteFacility(Long id) {
-        Facility facility = getFacilityById(id);
-        facilityRepository.delete(facility);
+        facilityRepository.delete(getFacilityById(id));
     }
 }
