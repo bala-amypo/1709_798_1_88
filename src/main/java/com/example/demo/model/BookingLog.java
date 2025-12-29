@@ -1,15 +1,9 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "booking_logs")
 public class BookingLog {
 
     @Id
@@ -19,13 +13,31 @@ public class BookingLog {
     @ManyToOne
     private Booking booking;
 
-    private String logMessage;
-
+    private String action;
     private LocalDateTime loggedAt;
 
-    // Required for test t27
-    @PrePersist
-    public void onCreate() {
-        this.loggedAt = LocalDateTime.now();
+    public BookingLog() {}
+
+    public BookingLog(Long id, Booking booking, String action, LocalDateTime loggedAt) {
+        this.id = id;
+        this.booking = booking;
+        this.action = action;
+        this.loggedAt = loggedAt;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Booking getBooking() {
+        return booking;
+    }
+
+    public String getAction() {
+        return action;
+    }
+
+    public LocalDateTime getLoggedAt() {
+        return loggedAt;
     }
 }

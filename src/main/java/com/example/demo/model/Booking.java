@@ -1,20 +1,10 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.*;
-
 import java.time.LocalDateTime;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "bookings")
 public class Booking {
-
-    // Constants explicitly referenced in tests
-    public static final String STATUS_CONFIRMED = "CONFIRMED";
-    public static final String STATUS_CANCELLED = "CANCELLED";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +17,52 @@ public class Booking {
     private User user;
 
     private LocalDateTime startTime;
-
     private LocalDateTime endTime;
+    private String status;
 
-    // Default required by t26
-    private String status = STATUS_CONFIRMED;
+    public Booking() {}
+
+    public Long getId() {
+        return id;
+    }
+
+    public Facility getFacility() {
+        return facility;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public LocalDateTime getEndTime() {
+        return endTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setFacility(Facility facility) {
+        this.facility = facility;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public void setEndTime(LocalDateTime endTime) {
+        this.endTime = endTime;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 }
