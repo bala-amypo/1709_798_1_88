@@ -5,32 +5,29 @@ import com.example.demo.model.BookingLog;
 import com.example.demo.repository.BookingLogRepository;
 import com.example.demo.repository.BookingRepository;
 import com.example.demo.service.BookingLogService;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public class BookingLogServiceImpl implements BookingLogService {
 
-    private final BookingLogRepository bookingLogRepository;
+    private final BookingLogRepository logRepository;
     private final BookingRepository bookingRepository;
 
-    public BookingLogServiceImpl(BookingLogRepository bookingLogRepository,
+    public BookingLogServiceImpl(BookingLogRepository logRepository,
                                  BookingRepository bookingRepository) {
-        this.bookingLogRepository = bookingLogRepository;
+        this.logRepository = logRepository;
         this.bookingRepository = bookingRepository;
     }
 
     @Override
     public BookingLog addLog(Long bookingId, String message) {
-        Booking booking = bookingRepository.findById(bookingId).orElse(null);
-        BookingLog log = new BookingLog(null, booking, message, null);
-        return bookingLogRepository.save(log);
+        Booking booking = bookingRepository.findById(bookingId).orElseThrow();
+        return logRepository.save(new BookingLog(null, booking, message, null));
     }
 
     @Override
     public List<BookingLog> getLogsByBooking(Long bookingId) {
-        Booking booking = bookingRepository.findById(bookingId).orElse(null);
-        return bookingLogRepository.findByBookingOrderByLoggedAtAsc(booking);
+        Booking booking = bookingRepository.findById(bookingId).orElseThrow();
+        return logRepository.findByBookingOrderByLoggedAtAsc(booking);
     }
 }

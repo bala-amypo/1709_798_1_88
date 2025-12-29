@@ -5,30 +5,28 @@ import com.example.demo.model.User;
 import com.example.demo.repository.ApartmentUnitRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.ApartmentUnitService;
-import org.springframework.stereotype.Service;
 
-@Service
 public class ApartmentUnitServiceImpl implements ApartmentUnitService {
 
-    private final ApartmentUnitRepository apartmentUnitRepository;
+    private final ApartmentUnitRepository unitRepository;
     private final UserRepository userRepository;
 
-    public ApartmentUnitServiceImpl(ApartmentUnitRepository apartmentUnitRepository,
+    public ApartmentUnitServiceImpl(ApartmentUnitRepository unitRepository,
                                     UserRepository userRepository) {
-        this.apartmentUnitRepository = apartmentUnitRepository;
+        this.unitRepository = unitRepository;
         this.userRepository = userRepository;
     }
 
     @Override
     public ApartmentUnit assignUnitToUser(Long userId, ApartmentUnit unit) {
-        User user = userRepository.findById(userId).orElse(null);
+        User user = userRepository.findById(userId).orElseThrow();
         unit.setOwner(user);
-        return apartmentUnitRepository.save(unit);
+        return unitRepository.save(unit);
     }
 
     @Override
     public ApartmentUnit getUnitByUser(Long userId) {
-        User user = userRepository.findById(userId).orElse(null);
-        return apartmentUnitRepository.findByOwner(user).orElse(null);
+        User user = userRepository.findById(userId).orElseThrow();
+        return unitRepository.findByOwner(user).orElseThrow();
     }
 }
