@@ -33,33 +33,4 @@ public class FacilityServiceImpl implements FacilityService {
     }
 
     @Override
-    public Facility getFacilityById(Long id) {
-        return facilityRepository.findById(id)
-                .orElseThrow(() ->
-                        new ResourceNotFoundException("Facility not found with id " + id));
-    }
-
-    @Override
-    public List<Facility> getAllFacilities() {
-        return facilityRepository.findAll();
-    }
-
-    @Override
-    public Facility updateFacility(Long id, Facility facility) {
-        Facility existing = getFacilityById(id);
-
-        existing.setName(facility.getName());
-        existing.setType(facility.getType());
-        existing.setLocation(facility.getLocation());
-        existing.setDescription(facility.getDescription());
-        existing.setOpenTime(facility.getOpenTime());
-        existing.setCloseTime(facility.getCloseTime());
-
-        return facilityRepository.save(existing);
-    }
-
-    @Override
-    public void deleteFacility(Long id) {
-        facilityRepository.delete(getFacilityById(id));
-    }
-}
+    public List<Facility> get
