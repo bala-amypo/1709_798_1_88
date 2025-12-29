@@ -1,6 +1,5 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.exception.BadRequestException;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.model.Facility;
 import com.example.demo.repository.FacilityRepository;
@@ -20,14 +19,6 @@ public class FacilityServiceImpl implements FacilityService {
 
     @Override
     public Facility createFacility(Facility facility) {
-        if (facility.getOpenTime() == null) {
-            throw new BadRequestException("Open time is required");
-        }
-
-        if (facility.getCloseTime() == null) {
-            throw new BadRequestException("Close time is required");
-        }
-
         return facilityRepository.save(facility);
     }
 
