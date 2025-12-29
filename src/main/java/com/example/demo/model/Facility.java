@@ -1,7 +1,6 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalTime;
 
 @Entity
 public class Facility {
@@ -11,36 +10,27 @@ public class Facility {
     private Long id;
 
     private String name;
-    private LocalTime openTime;
-    private LocalTime closeTime;
+
+    // ✅ CHANGE FROM LocalTime → String
+    private String openTime;
+    private String closeTime;
 
     public Facility() {}
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public LocalTime getOpenTime() {
+    public String getOpenTime() {
         return openTime;
     }
 
-    public LocalTime getCloseTime() {
+    public String getCloseTime() {
         return closeTime;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setOpenTime(LocalTime openTime) {
+    public void setOpenTime(String openTime) {
         this.openTime = openTime;
     }
 
-    public void setCloseTime(LocalTime closeTime) {
+    public void setCloseTime(String closeTime) {
         this.closeTime = closeTime;
     }
 }
+

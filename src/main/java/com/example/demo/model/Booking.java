@@ -6,6 +6,10 @@ import java.time.LocalDateTime;
 @Entity
 public class Booking {
 
+    // ✅ ADD THESE
+    public static final String STATUS_CONFIRMED = "CONFIRMED";
+    public static final String STATUS_CANCELLED = "CANCELLED";
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,47 +26,14 @@ public class Booking {
 
     public Booking() {}
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
+    public LocalDateTime getStartTime() { return startTime; }
+    public LocalDateTime getEndTime() { return endTime; }
+    public String getStatus() { return status; }
 
-    public Facility getFacility() {
-        return facility;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public LocalDateTime getStartTime() {
-        return startTime;
-    }
-
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setFacility(Facility facility) {
-        this.facility = facility;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
-    }
-
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
+    public void setFacility(Facility facility) { this.facility = facility; }
+    public void setUser(User user) { this.user = user; }
+    public void setStartTime(LocalDateTime startTime) { this.startTime = startTime; }
+    public void setEndTime(LocalDateTime endTime) { this.endTime = endTime; }
+    public void setStatus(String status) { this.status = status; }
 }
