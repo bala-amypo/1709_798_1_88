@@ -13,14 +13,12 @@ public class Facility {
     private String name;
     private String description;
 
-    // Constructors
     public Facility() {}
     public Facility(String name, String description) {
         this.name = name;
         this.description = description;
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 

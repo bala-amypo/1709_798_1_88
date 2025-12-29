@@ -16,14 +16,12 @@ public class Booking {
     @JoinColumn(name = "facility_id")
     private Facility facility;
 
-    // Constructors
     public Booking() {}
     public Booking(String customerName, Facility facility) {
         this.customerName = customerName;
         this.facility = facility;
     }
 
-    // Getters and Setters
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
 
