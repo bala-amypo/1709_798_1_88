@@ -17,18 +17,7 @@ public class Facility {
     private LocalTime openTime;
     private LocalTime closeTime;
 
-    public Facility() {
-    }
-
-    public Facility(Long id, String name, String description, String location,
-                    LocalTime openTime, LocalTime closeTime) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
-        this.openTime = openTime;
-        this.closeTime = closeTime;
-    }
+    public Facility() {}
 
     public Long getId() {
         return id;
