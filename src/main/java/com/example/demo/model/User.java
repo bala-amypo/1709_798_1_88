@@ -33,5 +33,11 @@ public class User {
     public String getRole() { return role; }
     public String getPhone() { return phone; }
 
-    public void setRole(String role) { this.role = role; }
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
 }
